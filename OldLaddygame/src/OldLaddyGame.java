@@ -17,7 +17,7 @@ public class OldLaddyGame implements ActionListener{
 	OldLaddyGame(){
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800, 800); // Futuramente setar para tamanho da resolução do pc
-		frame.getContentPane().setBackground(new Color(154,205,50));
+		frame.getContentPane().setBackground(UIManager.getLookAndFeelDefaults().getColor("Button.background"));
 		frame.setLayout(new BorderLayout());
 		frame.setVisible(true);
 		
@@ -32,7 +32,7 @@ public class OldLaddyGame implements ActionListener{
 		title_panel.setBounds(0,0, 800, 100); // check res here
 		
 		button_panel.setLayout(new GridLayout(3,3));
-		button_panel.setBackground(new Color(152,251,152));
+		button_panel.setBackground(UIManager.getLookAndFeelDefaults().getColor("Button.background"));
 		
 		for(int i=0; i<9; i++) {
 			buttons[i] = new JButton();
