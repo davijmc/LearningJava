@@ -11,7 +11,7 @@ public class OldLaddyGame implements ActionListener{
 	JPanel button_panel = new JPanel();
 	JLabel textField = new JLabel();
 	JButton[] buttons = new JButton[9];
-	//JButton rst = new JButton();
+	JButton rst = new JButton("🔄");
 	boolean player1_turn;
 	
 	OldLaddyGame(){
@@ -42,34 +42,60 @@ public class OldLaddyGame implements ActionListener{
 			buttons[i].addActionListener(this);
 		}
 		
+		rst.setSize(100,100);
+		
 		title_panel.add(textField);
 		frame.add(title_panel,BorderLayout.NORTH);
 		frame.add(button_panel);
+		
+		JPanel rstPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        rstPanel.add(rst);
+        frame.add(rstPanel, BorderLayout.SOUTH);
+        rst.setActionCommand("RST");
+        rst.addActionListener(this);
 		
 		firstTurn();
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		for(int i=0; i<9; i++) {
-			if(e.getSource()==buttons[i]){
-				if(player1_turn) {
-					if(buttons[i].getText()=="") {
-						buttons[i].setForeground(new Color(255, 0, 0));
-						buttons[i].setText("X");
-						player1_turn = false;
-						textField.setText("O turn");
-						check();
-					}
-				}else {
-					if(buttons[i].getText()=="") {
-						buttons[i].setForeground(new Color(0, 0, 255));
-						buttons[i].setText("O");
-						player1_turn = true;
-						textField.setText("X turn");
-						check();
+		String command = e.getActionCommand();
+		if (command.equals("RST")) {
+	        rstGame();
+	    }else {
+			for(int i=0; i<9; i++) {
+				if(e.getSource()==buttons[i]){
+					if(player1_turn) {
+						if(buttons[i].getText()=="") {
+							buttons[i].setForeground(new Color(255, 0, 0));
+							buttons[i].setText("X");
+							player1_turn = false;
+							textField.setText("O turn");
+							check();
+						}
+					}else {
+						if(buttons[i].getText()=="") {
+							buttons[i].setForeground(new Color(0, 0, 255));
+							buttons[i].setText("O");
+							player1_turn = true;
+							textField.setText("X turn");
+							check();
+						}
 					}
 				}
 			}
+	    }
+	}
+	
+	public void rstGame() {
+		for(int i=0; i<9; i++){
+			buttons[i].setEnabled(true);
+			buttons[i].setText("");
+			buttons[i].setBackground(UIManager.getLookAndFeelDefaults().getColor("Button.background"));
+		}
+		if(player1_turn){
+			textField.setText("X turn");
+		}else{
+			textField.setText("O turn");
 		}
 	}
 	
