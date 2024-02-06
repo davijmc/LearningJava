@@ -106,55 +106,52 @@ public class OldLaddyGame implements ActionListener{
 			}else {
 				oWins(0,1,2);
 			}
-		}
-		if(buttons[3].getText()==buttons[4].getText() && buttons[4].getText()==buttons[5].getText() && buttons[4].getText()!="") { // horizontal
+		}else if(buttons[3].getText()==buttons[4].getText() && buttons[4].getText()==buttons[5].getText() && buttons[4].getText()!="") { // horizontal
 			if(buttons[3].getText()=="X") {
 				xWins(3,4,5);
 			}else {
 				oWins(3,4,5);
 			}
-		}
-		if(buttons[6].getText()==buttons[7].getText() && buttons[7].getText()==buttons[8].getText() && buttons[6].getText()!="") { // horizontal
+		}else if(buttons[6].getText()==buttons[7].getText() && buttons[7].getText()==buttons[8].getText() && buttons[6].getText()!="") { // horizontal
 			if(buttons[6].getText()=="X") {
 				xWins(6,7,8);
 			}else {
 				oWins(6,7,8);
 			}
-		}
-		if(buttons[0].getText()==buttons[3].getText() && buttons[3].getText()==buttons[6].getText() && buttons[0].getText()!="") { // vertical
+		}else if(buttons[0].getText()==buttons[3].getText() && buttons[3].getText()==buttons[6].getText() && buttons[0].getText()!="") { // vertical
 			if(buttons[0].getText()=="X") {
 				xWins(0,3,6);
 			}else {
 				oWins(0,3,6);
 			}
-		}
-		if(buttons[1].getText()==buttons[4].getText() && buttons[4].getText()==buttons[7].getText() && buttons[4].getText()!="") { // vertical
+		}else if(buttons[1].getText()==buttons[4].getText() && buttons[4].getText()==buttons[7].getText() && buttons[4].getText()!="") { // vertical
 			if(buttons[1].getText()=="X") {
 				xWins(1,4,7);
 			}else {
 				oWins(1,4,7);
 			}
-		}
-		if(buttons[2].getText()==buttons[5].getText() && buttons[5].getText()==buttons[8].getText() && buttons[2].getText()!="") { // vertical
+		}else if(buttons[2].getText()==buttons[5].getText() && buttons[5].getText()==buttons[8].getText() && buttons[2].getText()!="") { // vertical
 			if(buttons[2].getText()=="X") {
 				xWins(2,5,8);
 			}else {
 				oWins(2,5,8);
 			}
-		}
-		if(buttons[0].getText()==buttons[4].getText() && buttons[4].getText()==buttons[8].getText() && buttons[0].getText()!="") { // diagonal
+		}else if(buttons[0].getText()==buttons[4].getText() && buttons[4].getText()==buttons[8].getText() && buttons[0].getText()!="") { // diagonal
 			if(buttons[4].getText()=="X") {
 				xWins(0,4,8);
 			}else {
 				oWins(0,4,8);
 			}
-		}
-		if(buttons[2].getText()==buttons[4].getText() && buttons[4].getText()==buttons[6].getText() && buttons[2].getText()!="") { // diagonal
+		}else if(buttons[2].getText()==buttons[4].getText() && buttons[4].getText()==buttons[6].getText() && buttons[2].getText()!="") { // diagonal
 			if(buttons[4].getText()=="X") {
 				xWins(2,4,6);
 			}else {
 				oWins(2,4,6);
 			}
+		}else if(buttons[0].getText()!="" && buttons[1].getText()!="" && buttons[2].getText()!="" && buttons[3].getText()!="" 
+				&& buttons[4].getText()!="" && buttons[5].getText()!="" && buttons[6].getText()!="" && buttons[7].getText()!="" 
+				&& buttons[8].getText()!=""){ //tie
+			tie();
 		}
 	}
 	
@@ -177,5 +174,13 @@ public class OldLaddyGame implements ActionListener{
 			buttons[i].setEnabled(false);
 		}
 		textField.setText("O wins!");
+	}
+	
+	public void tie() {
+		for(int i=0; i<9; i++){
+			buttons[i].setBackground(Color.RED);
+			buttons[i].setEnabled(false);
+		}
+		textField.setText("Tie!");
 	}
 }
