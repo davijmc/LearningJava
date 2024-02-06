@@ -21,8 +21,8 @@ public class OldLaddyGame implements ActionListener{
 		frame.setLayout(new BorderLayout());
 		frame.setVisible(true);
 		
-		textField.setBackground(new Color(173,255,47));
-		textField.setForeground(new Color(85,107,47));
+		textField.setBackground(UIManager.getLookAndFeelDefaults().getColor("Button.background"));
+		textField.setForeground(new Color(80,142,201));
 		textField.setFont(new Font("Ink free", Font.BOLD,75));
 		textField.setHorizontalAlignment(JLabel.CENTER);
 		textField.setText("Jogo da Veia");
@@ -182,9 +182,9 @@ public class OldLaddyGame implements ActionListener{
 	}
 	
 	public void xWins(int a, int b, int c) {
-		buttons[a].setBackground(Color.GREEN);
-		buttons[b].setBackground(Color.GREEN);
-		buttons[c].setBackground(Color.GREEN);
+		buttons[a].setBackground(new Color(150,230,170));
+		buttons[b].setBackground(new Color(150,230,170));
+		buttons[c].setBackground(new Color(150,230,170));
 		for(int i=0; i<9; i++){
 			buttons[i].setEnabled(false);
 		}
@@ -193,9 +193,9 @@ public class OldLaddyGame implements ActionListener{
 	}
 
 	public void oWins(int a, int b, int c) {
-		buttons[a].setBackground(Color.GREEN);
-		buttons[b].setBackground(Color.GREEN);
-		buttons[c].setBackground(Color.GREEN);
+		buttons[a].setBackground(new Color(150,230,170));
+		buttons[b].setBackground(new Color(150,230,170));
+		buttons[c].setBackground(new Color(150,230,170));
 		for(int i=0; i<9; i++){
 			buttons[i].setEnabled(false);
 		}
@@ -204,7 +204,7 @@ public class OldLaddyGame implements ActionListener{
 	
 	public void tie() {
 		for(int i=0; i<9; i++){
-			buttons[i].setBackground(Color.RED);
+			buttons[i].setBackground(new Color(250,130,130));
 			buttons[i].setEnabled(false);
 		}
 		textField.setText("Tie!");
